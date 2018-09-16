@@ -1,0 +1,156 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Posts</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="timer.js"></script>
+        <link rel="stylesheet" type="text/css" href="layout.css">
+        <script>
+            
+            function addToSession(id){
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.staus == 200){  
+                    }
+                };
+                
+                xmlhttp.open("GET", "php/postToSession.php?id=" + id, true);
+                xmlhttp.send();
+                
+            }
+            
+            
+            function addToPage(arr){
+                //array in this form:
+                //[id1,title1,id2,title2,etc...]
+                var list = document.getElementById("posts");
+                var x;
+                for(x=0;x<arr.length;x+=2){
+                    //create list item
+                    var li = document.createElement("li");
+                    //set id
+                    li.setAttribute("id",arr[x]);
+                    
+                    var link = document.createElement("a");
+                    link.setAttribute("href","http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/Post.html");
+                    link.innerHTML = arr[x+1];
+                    
+                    var func = "addToSession(" + arr[x] + ")";
+                    link.setAttribute("onclick", func);
+                    
+                    li.append(link);
+                    list.append(li);
+                }
+            }
+            
+            function topicFave(arr){
+                var header = document.getElementById("topic");
+                header.innerHTML = arr[1];
+                
+                if(arr[0] == 1){
+                    document.getElementById("fave").checked = true;
+                }else{
+                    document.getElementById("fave").checked = false;
+                }
+            }
+        
+            function loadPage(){
+                //used to load in Topic Header and Favorite selection
+                var first = new XMLHttpRequest();
+                first.onreadystatechange = function(){
+                  if(this.readyState == 4 && this.status == 200){
+                      var arr =JSON.parse(this.responseText);
+                      topicFave(arr);
+                  }  
+                };
+                first.open("GET","php/topicfave.php",true);
+                first.send();
+                
+                
+                
+                //used to load in all posts
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function(){
+                  if(this.readyState == 4 && this.status == 200){
+                      var arr = JSON.parse(this.responseText);
+                      if(arr[0]==-1){
+                          var l = document.createElement("li");
+                          var list = document.getElementById("posts");
+                          l.innerHTML = "No Posts Exist";
+                          list.append(l);
+                      }else{
+                          addToPage(arr);
+                      }
+                      
+                  }  
+                };
+                xmlhttp.open("GET", "php/postInfo.php", true);
+                xmlhttp.send();
+                
+                
+                timer();
+                
+            }
+            
+            function addToFavorites(){
+                var check = document.getElementById("fave").checked;
+                
+                if(check){
+                    var c = 1;
+                }else{
+                    var c = 0;
+                }
+
+                
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function (){
+                    if(this.readyState == 4 && this.status == 200){
+                    }
+                };
+                xmlhttp.open("GET","php/favoriteChoice.php?checked="+c,true);
+                xmlhttp.send();
+                
+            }
+            
+        
+        
+        </script>
+        
+    </head>
+    <body onload="loadPage()">
+        <!-- NAV BAR -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Slurm Boards</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/homepage.html">Home</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/Topics.html">Topics</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/Favorites.html">Favorites</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/AccountPage.html"><span class="glyphicon glyphicon-user"></span> Account Info</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!--end nav-->
+        <div id="countdown" align="center"><span id="timer">  </span><br>
+        <span id="info">Time Until Reset</span></div>
+        
+        <div id="postContainer" align="center">
+        <h1 id="topic"></h1>
+        
+        <input type="checkbox" id="fave" onclick="addToFavorites()">Favorite This Topic?<br><br>
+        <a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/postCreation.html"><button type="button">Create New Post</button></a><br><br>
+        
+        <ul id="posts">
+            
+        </ul>
+    </div>
+    </body>
+    
+    
+</html>

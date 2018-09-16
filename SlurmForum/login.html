@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--need to make sure username / password are filled in
+        query database to look for given username and compare password
+        if query returns all good then redirect to homepage-->
+        
+        <script>
+            function check(){
+                var name = document.forms["login"]["username"].value;
+                var pass = document.forms["login"]["password"].value;
+                
+                if(name=="" || pass==""){
+                    alert("missing required information");
+                    return false;
+                }
+            
+                //alert(name);
+                
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    //alert("READY STATE: "+ this.readyState + "STATUS: "+ this.status);
+                    if (this.readyState == 4 && this.status == 200) {
+                        var result = parseInt(this.responseText);
+                        if(result==1){
+                            window.location.replace("http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/homepage.html");
+                        }else{
+                            alert("INVALID LOGIN");
+                            document.forms["login"]["username"].value = "";
+                            document.forms["login"]["password"].value = "";
+                        }
+                    }
+                };
+            
+                xmlhttp.open("GET", "php/checkCreds.php?user="+name+"&pass="+pass, true);
+                xmlhttp.send();
+            
+            }
+            
+//            
+//            function redirect(){
+//                window.location.replace("http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/signup.html")
+//            }
+            
+            
+        </script>
+
+    </head>
+    <body style="background-color: black; text-align: center" >
+    <center>
+        <form name="login" style="border:10px solid #fffdfd; width: 40%;">
+            <h1 style="color: white; font-size: 40pt;">Username:</h1>
+            <input style="font-size: 25pt;" type="text" name="username"><br>
+            <h1 style="color: white; font-size: 40pt">Password:</h1>
+            <input style="font-size: 25pt;" type="password" name="password"><br>
+            <input style="font-size:20pt;width: 25%; height: 30%;" type="button" value="Log-In" onclick="check()">
+            <h2 style="color: white; font-size: 20pt">Not A Member Yet? </h2>
+            <a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/signup.html">
+                <input style=" font-size:20pt; width: 25%;height: 20%;" type="button" value="Sign-up"></a>
+        </form>
+        <p id="test"></p>
+    </center>
+    </body>
+</html>

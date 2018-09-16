@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <title>Form</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Tim Clerico">
+    <meta name="keywords" content="Ithaca,College,CSS,HTML">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/main.css">
+    
+    <script src="main.js"></script>
+    </head>
+    <header>
+        <div class="row">
+        <div class="col-md-12" id="header-wrapper">
+            <div class="row">
+                <div class="col-md-10" id="school-logo">
+                    <img src="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/images/iclogo.png"/>
+                </div>
+                <div class="col-md-2" id="social">
+                    <a href="https://www.facebook.com/ithacacollege/" target="_blank"><img class="facebook" src="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/images/fblogo.png"/></a>
+                    <a href="https://twitter.com/IthacaCollege" target="_blank"><img class="twitter"src="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/images/twitter.png"/></a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="nav-bar">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="https://www.ithaca.edu/" target="_blank">Ithaca College</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/HW1.html">Home</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/courses.html">Courses</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/studentActivities.html">Activities</a></li>
+                    <li><a href="formspage.html">Forms</a></li>
+                    <li><a href="sales.html">Sales</a></li>
+                </ul>
+            </div>
+        </nav>
+        </div>
+    </header>
+    <body>
+        <form name="sales" action="" >
+            <fieldset>
+                <legend>Car</legend>
+                    <input type="radio" name="radio" value="item1">1992 Blazer $2000<br>
+                    <input type="radio" name="radio" value="item2">1985 F250 $2500<br>
+                    <input type="radio" name="radio" value="item3">1976 S10 $1700<br>
+                    <input type="radio" name="radio" value="item4">1967 Challanger $10000<br>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Engine</legend>
+                <select name="select">
+                    <option value="v8">5.7l V8 $1000</option>
+                    <option value="v12">7l V12 $4000</option>
+                    <option value="v6">3.7l V6 $300</option>
+                </select>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Package</legend>
+                <input type="checkbox" name="check1" id="lift">Lift and Wheel Package $5000<br>
+                <input type="checkbox" name="check2" id="int">Refurbished Interiorn $4000<br>
+                <input type="checkbox" name="check3" id="air">After Market Cold Air Intake System $700<br>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Personal Info</legend>
+                First Name: <input type="text" name="fname"><br>
+                Last Name: <input type="text" name="lname"><br>
+                Address: <br>
+                <textarea name="info" rows="5" cols="20"></textarea>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Action</legend>
+                <input type="button" onclick="estimateCost()" value="Estimate">
+                <br>
+                <br>
+                <input type="button" onclick="calcCost()" value="Buy"><br><br>
+                <input type="reset"><br><br>
+            </fieldset>
+        </form>
+        <p id="jp">Total Cost: $0</p>
+        
+    </body>
+    
+    <br>
+    <hr>
+    <footer>
+        <p id="footer-info">953 Danby Rd, Ithaca NY 14850</p>
+    </footer>
+    
+    
+    
+    
+</html>

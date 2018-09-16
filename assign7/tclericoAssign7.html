@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        table, th, td, tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 50%;
+        }
+        table{background-color: white;}
+        tr:nth-child(even) {background-color: #f2f2f2;}
+        th {background-color: white;}
+    </style>
+    <script>
+        function arrayManage(str){
+            var initarr = str.split(",");
+            initarr.shift();
+            alert(initarr);
+            addToTable(initarr);
+        }
+        
+    
+        function creatingElements(book,author){
+            //create a new row
+            var newRow = document.createElement("tr");
+            //2 new tds
+            var td1 = document.createElement("td");
+            var td2 = document.createElement("td");
+            //populate tds
+            var tBook = document.createTextNode(book);
+            var tAuthor = document.createTextNode(author);
+            td1.appendChild(tBook);
+            td2.appendChild(tAuthor);
+            //put tds in row
+            newRow.appendChild(td1);
+            newRow.appendChild(td2);
+            //put row in table
+            var table = document.getElementById("output");
+            table.appendChild(newRow);
+            
+            
+        }
+        
+        function addToTable(list){
+            var len = list.length;
+            for(x=0;x<len;x+=2){
+                creatingElements(list[x],list[x+1]);
+            }
+            
+            /**
+            var row = [];
+            var td = [];
+            alert("in addToTable");
+            //creates new row(s)
+            for(x=0;x<len/2;x++){
+                row.push(document.createElement("tr"));
+            }
+            //create new td(s)
+            for(x=0;x<len;x++){
+                td.push(document.createElement("td"));
+                console.log("tds ok");
+            }
+            //populate tds with text
+            for(x=0;x<len;x++){
+                td[x].appendChild(document.createTextNode(list[x]))
+            }
+             console.log("Tds full")
+             
+            
+            //append tds into rows 
+            for(x=0;x<len;x++){
+                row[parseInt(x/2)].appendChild(td[x]);
+            }
+            console.log("rows full")
+            //add row into table
+            for(x=0;x<len/2;x++){
+                document.getElementById("output").appendChild(row[x]);
+            }
+            console.log("rows in table")
+            **/
+            
+        }
+        
+        
+        
+        function pleaseWork() {
+            var genre = document.forms["books"]["first"].value;
+            var BoA = document.forms["books"]["second"].value;
+            var search;
+            if (BoA == "book"){
+                search = document.forms["books"]["title"].value;
+            }else if(BoA == "auth"){
+                search = document.forms["books"]["author"].value;
+            }else{
+                search="";
+            }
+            
+            //alert("search: "+search);
+            //alert("genre: "+genre);
+            //alert("BoA: "+BoA);
+            
+            if(BoA==""||genre==""||search==""){
+                window.alert("MISSING INFORMATION");
+                return false;
+            }
+            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                //alert("ReadyState: " + this.readyState + "status: " +this.status);
+                if (this.readyState == 4 && this.status == 200) {
+                    //taking in a string -> need function to split and add to table
+                    //arrayManage(this.responseText);
+                    //alert("IN THE AJAX RESPONSE FUNCTiON");
+                    var y = this.responseText;
+                    var pls = y.split(",");
+                    pls.shift();
+                    //alert(pls);
+                    
+                    var len = pls.length;
+                    //alert(len);
+                    //alert("starting element creation");
+                    for(x=0;x<len;x++){
+                        if(x%2==0){
+                            //alert("Creating new row");
+                            var newRow = document.createElement("tr");
+                            
+                            //alert("creating book entry");
+                            var z = document.createElement("td");
+                            //book.innerHTML = pls[x];
+                            var k = document.createTextNode(pls[x]);
+                            z.appendChild(k);
+                            newRow.appendChild(z);
+                            
+                            //alert("creating author entry");
+                            var z = document.createElement("td");
+                            //author.innerHTML = pls[x+1];
+                            var k = document.createTextNode(pls[x+1]);
+                            z.appendChild(k);
+                            newRow.appendChild(z);
+                            
+                            //alert("adding to table");
+                            //var table = document.getElementById("testing");
+                            document.getElementById("testing").appendChild(newRow);
+                            //alert("done");
+                        }
+                        
+                    }
+                    
+                    
+                }
+            };
+    xhttp.open("GET", "new.php?genre="+genre+"&search="+search+"&BoA="+BoA, true);
+            
+    //alert("sending to PHP");
+            
+    xhttp.send(); 
+}
+        
+    </script>
+    <body style="background-color:pink;">
+        <div id="form" style="background-color:red;width:50%;float:left;">
+            <h1>John's Lib</h1>
+            <div style="background-color:grey;width:80%;">
+            <form name="books">
+                <fieldset>
+                    <legend>Select a category:</legend>
+                    <input type="radio" name="first" value="sci-fi">Sci Fi<br>
+                    <input type="radio" name="first" value="myst">Mystery<br>
+                    <input type="radio" name="first" value="hist">Historical Fiction<br>
+                    <input type="radio" name="first" value="nfic">Non-Fiction<br>
+                </fieldset>
+                <fieldset>
+                    <legend>Select a funcion:</legend>
+                    <input type="radio" name="second" value="book">search for book<br>
+                    <input type="radio" name="second" value="auth">search for author<br>
+                </fieldset>
+                Book Name: <input type="text" name="title"><br>
+                Author Name: <input type="text" name="author"><br>
+                <input type="button" onclick="pleaseWork()" value="LEts Go">
+            </form>
+            </div>
+        </div>
+        <div id="write">
+            <h1>Search Results</h1>
+            <div id="table" stlye="background-color:white;">
+                <table id="testing">
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                    </tr>
+                
+                </table>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+    </body>
+</html>

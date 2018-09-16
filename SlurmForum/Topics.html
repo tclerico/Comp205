@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Topics</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="layout.css">
+        <script>
+            
+            function addToSession(tid){
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.staus == 200){  
+                        //alert(this.responseText);
+                    }
+                };
+                
+                xmlhttp.open("GET", "php/topicToSession.php?tid=" + tid, true);
+                xmlhttp.send();
+                
+            }
+            
+            
+            function addToPage(arr){
+                //array is in form [id1,name1,id2,name2,etc...]
+                var list = document.getElementById("topics");
+                var x;
+                for(x=0;x<arr.length;x+=2){
+                    //create li element
+                    var item = document.createElement("li");
+                    //set id of li
+                    item.setAttribute("id",arr[x]);
+                    //set onclick of li
+                    
+                    
+                    //create href
+                    var link = document.createElement("a");
+                    //does this link to the php for the post listing?
+                    link.setAttribute("href", "http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/PostListing.html");
+                    //place topic name in <a>
+                    link.innerHTML = arr[x+1];
+                    
+                    var func = "addToSession(" + arr[x] + ")";
+                    link.setAttribute("onclick", func);
+                    //append <a> to the <li>
+                    item.append(link);
+                    //append li to ul
+                    list.append(item);
+                }
+                
+            }
+            
+            function loadPage(){
+                
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                //alert("READY STATE: "+ this.readyState + "STATUS: "+ this.status);
+                
+                    if (this.readyState == 4 && this.status == 200) {
+                        var arr = JSON.parse(this.responseText);
+                        addToPage(arr);
+                    }
+            
+                };
+            
+            xmlhttp.open("GET", "php/topicInfo.php", true);
+            xmlhttp.send();
+                
+            }
+            
+        </script>
+        
+    </head>
+    
+    <body onload="loadPage()">
+        <!-- NAV BAR -->
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Slurm Boards</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/homepage.html">Home</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/Topics.html">Topics</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/Favorites.html">Favorites</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/AccountPage.html"><span class="glyphicon glyphicon-user"></span> Account Info</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!--end nav-->
+        <div id="containerTopic" align="center">
+        <h2 id="label">TOPICS</h2>
+        <ul id="topics">
+        
+        </ul>
+        </div>
+        
+    </body>
+    
+    
+    
+    
+</html>

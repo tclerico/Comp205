@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title class="topic-id">Sign-up</title>
+        <link rel="stylesheet" type="text/css" href="layout.css">
+<!--
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+-->
+    </head>
+    <script>
+        
+
+        
+        function insert(username,password){
+            var ins = new XMLHttpRequest();
+            ins.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    window.location.replace("http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/login.html")
+                }
+            };
+            ins.open("GET","php/AccInsert.php?name="+username+"&pass="+password,true);
+            ins.send();
+        }
+        
+        function create(){
+    
+        
+            //php to take account info and insert into SQL
+            //redirect to homepage
+            var username = document.forms["signupForm"]["username"].value;
+            var password = document.forms["signupForm"]["password"].value;
+            var confirm = document.forms["signupForm"]["confirm"].value;
+        
+            //make sure all fields are filled
+            if(username=="" || password=="" || confirm==""){
+                alert("Missing Some Required Information");            
+                return false;        
+            }        
+            //make sure password is correct        
+            if(password!=confirm){
+                alert("Passwords Did Not Match");
+                return false;
+            }
+            
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function(){
+                //alert("state: " + this.readyState + " Status: " + this.status);
+                if(this.readyState == 4 && this.status == 200){
+                    if(this.responseText == 1){
+                        alert("ACCOUNT NAME ALREADY EXISTS, TRY AGAIN");
+                        return false;
+                    }else{
+                        insert(username,password);
+                        //goodCreation(id);
+                    }
+                }
+            };
+            xmlhttp.open("GET","php/AccountCreation.php?name="+username,true);
+            xmlhttp.send();
+            
+            
+            
+        }
+        
+ 
+    </script>
+    
+    <body style="background-color: black">
+    <center>
+        <form name="signupForm" id="signUP">
+            <h1 id="pls"><span>Please enter a username of 5 characters or more.</span></h1><br>
+            <h2 id="work">Username: <br><input type="text" name="username" style="color:black;" ><span id="check"></span></h2>
+            <h2 id="ontime">Password: <br><input style="color:black;"type="text" name="password"></h2>
+            <h2 id="for">Confirm Password: <br><input type="text" name="confirm" style="color:black;"></h2>
+            <button style="color: black; width: 200pt;" type="button" onclick="create()">Submit</button>
+        </form>
+    </center>
+    </body>
+        
+        
+        
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title class="post-id">Post</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="layout.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Slurm Boards</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/homepage.html">Home</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/Topics.html">Topics</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/Favorites.html">Favorites</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/AccountPage.html"><span class="glyphicon glyphicon-user"></span> Account Info</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <form name="accountInfo" id="accinfo">
+            <div id="container">
+            <div id="usernamestuff">
+            <p>Username: <span id="uname">Test</span></p>
+            
+            <p>Change Username:</p>
+            
+            <input type="text" name="newname"><br>
+            
+            <input type="button" value="Change Username" onclick="changeName()">
+            </div>
+            <div id="emailstuff">
+            <p>Email: <span id="email">test@mail</span></p>
+            
+            <p>Enter New Email:</p>
+            <input type="text" name="newemail"><br>
+            <input type="button" value="Change Email" onclick="changeEmail()">
+            </div>
+            </div>
+        </form>
+        <hr>
+        <h2 id="userPosts">Your Posts</h2>
+        
+        <ul id="posts">
+            <li>TEST</li>
+        </ul>
+    
+    </body>
+
+
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Courses</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Tim Clerico">
+    <meta name="keywords" content="Ithaca,College,CSS,HTML">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+        .ul-ass2{
+            list-style-type: disc;
+        }
+        .ol-ass2{
+            list-style-type: lower-greek;
+        }
+        .d1{
+            padding-left:50px;
+            padding-bottom:25px;
+            margin:20px;
+            border-style: groove;
+            border-width:5px;
+            background-color: darkslateblue;
+            color: azure;
+        }
+        .d2{
+            padding-left:50px;
+            padding-bottom:25px;
+            margin: 20px;
+            border-style: dashed;
+            border-width: 5px;
+            border-color: aqua;
+            background-color: aquamarine;
+        }
+        .d3{
+            padding-left:50px;
+            padding-bottom:25px;
+            margin: 20px;
+            border-left-style: outset;
+            border-right-style: inset;
+            border-top-style: double;
+            border-bottom-style: ridge;
+            border-width: 6px;
+            border-color:cornflowerblue;
+            background-color: lightgray;
+        }
+    </style>
+    </head>
+    <header>
+        <div class="row">
+        <div class="col-md-12" id="header-wrapper">
+            <div class="row">
+                <div class="col-md-10" id="school-logo">
+                    <img src="images/iclogo.png"/>
+                </div>
+                <div class="col-md-2" id="social">
+                    <a href="https://www.facebook.com/ithacacollege/" target="_blank"><img class="facebook" src="images/fblogo.png"/></a>
+                    <a href="https://twitter.com/IthacaCollege" target="_blank"><img class="twitter"src="images/twitter.png"/></a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="nav-bar">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="https://www.ithaca.edu/" target="_blank">Ithaca College</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="HW1.html">Home</a></li>
+                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="studentActivities.html">Activities</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign2/formspage.html">Forms</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign3/sales">Sales</a></li>
+                </ul>
+            </div>
+        </nav>
+        </div>
+    </header>
+    <body>
+    <div class="row">
+        <div class="col-md-12">
+        <ol id="courses">
+            <li class="course-head">Big Cheese 101
+                <p class="course-desc">In Big Cheese 101 students will learn what it means to be a big cheese, from ignoring people lower than you to wasting money. The curiculum has been restructured for the upcoming semester to really fit the needs of our future leaders and Big Cheeses.<br>
+                Pre Reqs: Working Class 101 and Climbing Corporate Ladders 204</p>
+            </li>
+            <li class="course-head">Killing Time 203
+                <p class="course-desc">Killing time 203 is the next level of the Killing time course path. In this course students will learn and practice more advanced techniques to waste time and be all around unproductive. This is a long course ranging between 2 and 4 hours so students should alot enough time for it in their schedule.<br>
+                Pre Reqs: Killing Time 101 or Procrastination 101</p>
+            </li>
+            <li class="course-head">Intro to Modern Society
+                <p class="course-desc">The objective of this course is to give students a general understanding of today's society. Much of the course will be spent learning how to not offend people, and when it's ok to scold men for mansplaining or yell at people for being privilaged. The final will consist of students competing in a battle of ideas and logical falicies.<br>
+                Pre Reqs: None</p>
+            </li>
+            <li class="course-head">Baking 101
+                <p class="course-desc">This course aims to teach students the very basics of baking. Students will learn how to bake things like cakes and bread in their home kitchens. Baking 101 is only a half semester course and is only worht 1 credit.<br>
+                Pre Reqs: None</p>
+            </li>
+            <li class="course-head">Mud Sculpting 205
+                <p class="course-desc">This class is held at different areas outside and has no set schedule. It will meet sparadically according to the weather and students will be alerted as to the meeting place the day of class. The course is set to take any amount of time, many classes may only last 3 hours but depending on conditions one class can last up to 5 hours. Students will be using natural materials outdoors to make sculptures that imitate reality.<br>
+                Pre Reqs: Sculpting 101</p>
+            </li>
+        </ol>
+        </div>
+    </div>
+        
+     <!-- START OF ASSIGN 2 REQS. -->
+        <div>
+            <ul class="nav-ul">
+                <li class="nav-item"><a class="nav-l" href="HW1.html">HOME</a></li>
+                <li class="nav-item"><a class="nav-l" href="courses.html">COURSES</a></li>
+                <li class="nav-item"><a class="nav-l" href="studentActivities.html">ACTIVITIES</a></li>
+            </ul>
+        </div>
+        <br>
+        <div>
+            <table>
+                <tr class="t-row">
+                    <th class="thead">Header#1</th>
+                    <th class="thead">Header#2</th>
+                    <th class="thead">Header#3</th>
+                </tr>
+                <tr class="t-row">
+                    <td class="tcon">Content</td>
+                    <td class="tcon">Content</td>
+                    <td class="tcon">Content</td>
+                </tr>
+                <tr class="t-row">
+                    <td class="tcon">Content</td>
+                    <td class="tcon">Content</td>
+                    <td class="tcon">Content</td>
+                </tr> 
+                <tr class="t-row">
+                    <td class="tcon">Content</td>
+                    <td class="tcon">Content</td>
+                    <td class="tcon">Content</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <ul class="ul-ass2">
+            <li>unordered list</li>
+            <li>unordered list</li>
+            <li>unordered list</li>
+            <li>unordered list</li>
+        </ul>
+        
+        <ol class="ol-ass2">
+            <li>ordered list</li>
+            <li>ordered list</li>
+            <li>ordered list</li>
+            <li>ordered list</li>
+        </ol>
+        <br>
+        <div align="left"class="d1">This is the first Div</div>
+        <div align="center" class="d2">This is the second Div</div>
+        <div align="right"class="d3">This is the third Div</div>
+    
+    </body>
+    <hr>
+    <footer>
+        <p id="footer-info">953 Danby Rd, Ithaca NY 14850</p>
+    </footer>
+    
+    
+    
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Assignment 5</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Tim Clerico">
+    <meta name="keywords" content="Ithaca,College,CSS,HTML">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="ass5.js"></script>
+</head>
+<body onload="checkCookie()">
+    <div id="form" style="float:left;background-color:yellow;width:50%">
+        <h1>Welcome to Inapropriate Questions to Ask John Barr</h1>
+        <form style="background-color:pink;width:75%;" name="ass5">
+            <fieldset>
+                <legend>Select a new element to add</legend>
+                <input type="radio" name="element1" value="p">p tag<br>
+                <input type="radio" name="element1" value="h1">h1 tag<br>
+                <input type="radio" name="element1" value="h2">h2 tag<br>
+                <input type="radio" name="element1" value="span">span tag<br>
+                <p>Enter Your Social Security Number</p>
+                <input type="text" name="stuffs"><br>
+                <button type="button" onclick="addElements()">Add Element</button>
+            </fieldset>
+            <fieldset>
+                <legend>Add More Stuff!</legend>
+                <table style="border: 1px solid black;border-collapse: collapse;">
+                    <tr>
+                        <td style="border: 1px solid black;border-collapse: collapse;">Thing #1</td>
+                        <td style="border: 1px solid black;border-collapse: collapse;"><input type="text" name="T1"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black;border-collapse: collapse;">Thing #2</td>
+                        <td style="border: 1px solid black;border-collapse: collapse;"><input type="text" name="T2"></td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid black;border-collapse: collapse;">Thing #3</td>
+                        <td style="border: 1px solid black;border-collapse: collapse;"><input type="text" name="T3"></td>
+                    </tr>
+                    
+                </table>
+                <br>
+                <button type="button" onclick="addTable()">Add New Stuff!</button>
+                <br>
+                <br>
+                <button type="button" onclick="allTd()">Get All td tags</button>
+            
+            </fieldset>
+        </form>
+    </div>
+    <div id="output" style="background-color:#e493f5;margin:auto;">
+        <p>Things Being Added!!!!</p>
+        <p id="add"></p>
+        <table style="border: 1px solid black;border-collapse: collapse;" id="outTable">
+            <tr>
+                <th style="border: 1px solid black;border-collapse: collapse;">Thing #1</th>
+                <th style="border: 1px solid black;border-collapse: collapse;">Thing #2</th>
+                <th style="border: 1px solid black;border-collapse: collapse;">Thing #3</th>
+            </tr>
+        </table>
+        <br>
+        <h1>YOUR NAME</h1>
+        <p id="cookie1"></p>
+        <h1>Mothers Maiden Name</h1>
+        <p id="cookie2"></p>
+        <h1>Address</h1>
+        <p id="cookie3"></p>
+        <button type="button" onclick="changeCookies()">Change Cookies</button>
+    </div>    
+    </body>
+</html>

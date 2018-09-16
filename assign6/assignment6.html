@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <script src="main.js"></script>
+    <body>
+        <form name="sales" action="form.php" method="post">
+            <fieldset>
+                <legend>Car</legend>
+                    <input type="radio" name="radio" value="item1">1992 Blazer $2000<br>
+                    <input type="radio" name="radio" value="item2">1985 F250 $2500<br>
+                    <input type="radio" name="radio" value="item3">1976 S10 $1700<br>
+                    <input type="radio" name="radio" value="item4">1967 Challanger $10000<br>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Engine</legend>
+                <select name="select">
+                    <option value="v8">5.7l V8 $1000</option>
+                    <option value="v12">7l V12 $4000</option>
+                    <option value="v6">3.7l V6 $300</option>
+                </select>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Package</legend>
+                <input type="checkbox" name="check[]" value="lift">Lift and Wheel Package $5000<br>
+                <input type="checkbox" name="check[]" value="int">Refurbished Interior $4000<br>
+                <input type="checkbox" name="check[]" value="air">After Market Cold Air Intake System $700<br>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Personal Info</legend>
+                First Name: <input type="text" name="fname"><br>
+                Last Name: <input type="text" name="lname"><br>
+                Address: <br>
+                <textarea name="info" rows="5" cols="20"></textarea>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Action</legend>
+                <input type="button" onclick="estimateCost()" value="Estimate">
+                <br>
+                <br>
+                <input type="submit" ><br><br>
+                <input type="reset"><br><br>
+            </fieldset>
+        </form>
+    
+        
+    </body>
+    
+</html>

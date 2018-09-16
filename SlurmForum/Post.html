@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title class="post-id">Post</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="layout.css">
+        <script>
+          
+            function addToPage(arr){
+                //array in order of:
+                //[title,date,message,username]
+                var title = document.getElementById("title");
+                var auth = document.getElementById("author");
+                var date = document.getElementById("date");
+                var content = document.getElementById("content");
+                
+                title.innerHTML = arr[0];
+                date.innerHTML = arr[1];
+                content.innerHTML = arr[2];
+                auth.innerHTML = arr[3];
+                
+            }
+            
+            
+            function addComment(){
+                var message = document.getElementById("subComment").value;
+                
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                            if(this.responseText!=-1){
+                            var arr = JSON.parse(this.responseText);
+                            var list = document.getElementById("comList");
+                            var li = document.createElement("li");
+                            li.innerHTML = arr[1] + " <-- " + arr[0];
+                            list.append(li);
+                        }else{
+                            alert("ERROR");
+                        }
+                    }
+                };
+                xmlhttp.open("GET","php/newComment.php?sub="+message,true);
+                xmlhttp.send();
+                
+            }
+            
+        
+            function commentsToPage(arr){
+                var list = document.getElementById("comList");
+                var x;
+                for(x=0;x<arr.length;x+=2){
+                    var li = document.createElement("li");
+                    li.innerHTML = arr[x] + " <-- " +arr[x+1];
+                    list.append(li);
+                }
+            }
+            
+            function loadComments(){
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        var arr = JSON.parse(this.responseText);
+                        if(arr[0] == -1){
+                            var list = document.getElementById("comList");
+                            var li = document.createElement("li");
+                            li.innerHTML = "No Comments Exist";
+                            list.append(li);
+                        }else{
+                            commentsToPage(arr);
+                        }
+                    }
+                };
+                xmlhttp.open("GET","php/commentInfo.php",true);
+                xmlhttp.send();
+                
+            }
+            
+            function loadPage(){
+                
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        addToPage(JSON.parse(this.responseText));
+                    }
+                };
+                xmlhttp.open("GET","php/postContent.php",true);
+                xmlhttp.send();
+                
+                loadComments();
+                
+            }
+            
+        
+        </script>
+    
+    </head>
+    
+    
+    <body onload="loadPage()">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Slurm Boards</a>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/homepage.html">Home</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/Topics.html">Topics</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/Favorites.html">Favorites</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/final/tests/AccountPage.html"><span class="glyphicon glyphicon-user"></span> Account Info</a></li>
+                </ul>
+            </div>
+        </nav>
+        
+        <!--Div for Post title -->
+        <div class="PostTitle">
+            <h1 id="title"></h1>
+            <!-- div for post info (name and date) -->
+            <div class="PostInfo">
+                <span id="date"></span>
+                <span id="author"></span>
+                <!-- div for the post content -->
+                </div>
+            <div class="PostContent">
+                <p id="content"></p>
+            </div>
+            
+        </div>
+        
+        <!-- div for comments-->
+        <div class="comments">
+            <ul id="comList">
+                
+            </ul>
+        </div>
+        
+        <!--Div for the comment creation form-->
+        <div class="nComment">
+            <form name="ncomment" id="newComment">
+                <fieldset>
+                    <legend>Create a New Comment</legend>
+                    <textarea name="creation" form="newComment" id="subComment"></textarea>
+                    <button type="button" onclick="addComment()">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+        
+        
+        
+    </body>
+</html>

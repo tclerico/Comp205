@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <title>Form</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Tim Clerico">
+    <meta name="keywords" content="Ithaca,College,CSS,HTML">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/main.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <style>
+        .ul-ass2{
+            background-color: beige;
+            color: cadetblue;
+            list-style-type: square;
+            margin: 5px;
+        }
+        .ol-ass2{
+            background-color: black;
+            color: white;
+            list-style-type: upper-roman;
+        }
+        .info-form{
+            
+        }
+    </style>
+    </head>
+    <header>
+        <div class="row">
+        <div class="col-md-12" id="header-wrapper">
+            <div class="row">
+                <div class="col-md-10" id="school-logo">
+                    <img src="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/images/iclogo.png"/>
+                </div>
+                <div class="col-md-2" id="social">
+                    <a href="https://www.facebook.com/ithacacollege/" target="_blank"><img class="facebook" src="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/images/fblogo.png"/></a>
+                    <a href="https://twitter.com/IthacaCollege" target="_blank"><img class="twitter"src="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/images/twitter.png"/></a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div id="nav-bar">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="https://www.ithaca.edu/" target="_blank">Ithaca College</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/HW1.html">Home</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/courses.html">Courses</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign1/studentActivities.html">Activities</a></li>
+                    <li><a href="formspage.html">Forms</a></li>
+                    <li><a href="http://cs-ithaca.eastus.cloudapp.azure.com/~tclerico/assign3/sales">Sales</a></li>
+                </ul>
+            </div>
+        </nav>
+        </div>
+    </header>
+    <body>
+        <div class="info-form" align="center">
+            <form action="http://cs-ithaca.eastus.cloudapp.azure.com/~barr/assign2.php" method="post">
+                <fieldset>
+                    <legend>Text Box Form</legend>
+                    First Name:<br>
+                    <input type="text" name="var1"><br>
+                    Last Name:<br>
+                    <input type="text" name="var1"><br>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Text Area Form</legend>
+                    <textarea name="var2" rows="15" cols="30">This is the text area</textarea><br>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Radio Button Form</legend>
+                    <input type="radio" name="var3" value="button1">Button 1<br>
+                    <input type="radio" name="var3" value="button2">Button 2<br>
+                    <input type="radio" name="var3" value="button3">Button 3<br>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Check Box Form</legend>
+                    <input type="checkbox" name="var4" value="thingy"> I have thingy<br>
+                    <input type="checkbox" name="var4" value="dingy"> I have a dingy<br>
+                    <input type="checkbox" name="var4" value="ringy"> I have  a ringy<br>
+                </fieldset>
+                <br>
+                <fieldset>
+                    <legend>Pull Down Form</legend>
+                    <select name="var5">
+                        <option value="option1">Option 1</option>
+                        <option value="option2">Option 2</option>
+                        <option value="option3">Option 3</option>
+                        <option value="option4">The End</option>
+                    </select>
+                </fieldset>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+    <br>
+     <hr>
+    <footer>
+        <p id="footer-info">953 Danby Rd, Ithaca NY 14850</p>
+    </footer>
+</html>
